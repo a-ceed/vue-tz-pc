@@ -1,20 +1,16 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
-  <div> {{articles}}</div>
+  <articles-list></articles-list>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue';
-import {mapState} from "vuex"; // @ is an alias to /src
+import {mapState} from "vuex";
+import ArticlesList from "@/components/ArticlesList.vue"; // @ is an alias to /src
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    HelloWorld,
+    ArticlesList,
   },
   computed: {
     ...mapState({
