@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <router-link to="/">Главная</router-link>
+    <router-link class="menu-item" to="/">Главная</router-link>
   </nav>
   <router-view/>
 </template>
@@ -11,9 +11,13 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   margin: 45px 80px 45px 80px;
+}
+
+a:visited {
+  color: inherit;
 }
 
 nav {
@@ -26,6 +30,11 @@ nav {
     &.router-link-exact-active {
       color: #42b983;
     }
+  }
+}
+@media (max-width: 800px) {
+  #app {
+    margin: 15px 20px 15px 20px;
   }
 }
 </style>
