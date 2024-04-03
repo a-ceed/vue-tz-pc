@@ -1,5 +1,5 @@
 <template>
-  <div class="img-conteiner">
+  <div class="img-container">
     <img class="img" v-if="article" :src="article.imgUrl" alt="Article Image">
   </div>
   <h1>
@@ -9,21 +9,17 @@
   <div class="like"> Лайков: {{ article.lois }}</div>
 </template>
 
-<script>
-export default {
-  name: "ArticlesPreview",
+<script setup lang="ts">
+import { defineProps } from 'vue';
+import { Iarticle} from "@/types/articles-types";
 
-  props: {
-    article: {
-      type: Object, // указываем, что ожидаем объект
-      required: true // указываем, что пропс обязателен
-    }
-  }
-}
+const props = defineProps<{
+  article: Iarticle;
+}>();
 </script>
 
 <style scoped>
-.img-conteiner {
+.img-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

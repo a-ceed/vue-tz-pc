@@ -1,10 +1,10 @@
 <template>
   <div class="post">
-    <div class="img-conteiner">
+    <div class="img-container">
       <img class="img" v-if="currentArticle" :src="currentArticle.imgUrl" alt="Article Image">
     </div>
 
-    <div class="title-container">
+    <div class="bar-container">
       <div class="title">
         <h1 v-if="currentArticle">{{ currentArticle.title }}</h1>
       </div>
@@ -29,8 +29,7 @@ export default {
   components: {UserComments},
   data() {
     return {
-      currentArticle: null,
-      textComment: null
+      currentArticle: null
     };
   },
 
@@ -42,10 +41,7 @@ export default {
 
   mounted() {
     const articlesId = this.$route.query.watch;
-    console.log("articlesId", articlesId)
-
     this.currentArticle = this.articles.find(item => item.id === parseInt(articlesId))
-    console.log('currentArticle.comments', this.currentArticle.comments);
   },
 
   methods: {
@@ -64,7 +60,7 @@ export default {
   max-width: 1024px;
 }
 
-.title-container {
+.bar-container {
   display: flex;
   justify-content: space-between;
   height: 100%;
@@ -103,7 +99,7 @@ export default {
   color: #2c3e50;
   margin-top: 20px;
 }
-.img-conteiner {
+.img-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -120,7 +116,7 @@ export default {
   display: block;
 }
 @media (max-width: 800px) {
-  .title-container {
+  .bar-container {
     display: block;
     justify-content: normal;
     height: 100%;

@@ -5,7 +5,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import {mapState} from "vuex";
-import ArticlesList from "@/components/ArticlesList.vue"; // @ is an alias to /src
+import ArticlesList from "@/components/ArticlesList.vue";
 
 export default defineComponent({
   name: 'HomeView',

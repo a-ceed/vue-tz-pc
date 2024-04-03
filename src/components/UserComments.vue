@@ -16,31 +16,42 @@
   <div class="textarea-block">
     <p>Введите комментарий</p>
     <textarea class="comment-textarea" type="text" v-model="textComment"></textarea>
-    <div>
+    <div v-if="textComment.length > 0">
       <button class="comment-button" @click="addNewComment">Отправить</button>
     </div>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { Store } from "vuex";
+import { IState } from "@/types/articles-types";
+import { RouteLocationNormalizedLoaded } from "vue-router";
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "UserComments",
+  data() {
+    return {
+      textComment: '' // Инициализируем переменную textComment
+    };
+  },
   props: {
     comments: {
-      type: Object, // ожидаем объект
+      type: Object,
       required: false
     }
   },
   methods: {
-    addNewComment() {
+    addNewComment(this: { $route: RouteLocationNormalizedLoaded, $store: Store<IState>, textComment: string }) {
       const payload = {
-        articleId: parseInt(this.$route.query.watch),
+        articleId: parseInt(this.$route.query.watch as string),
         newComment: this.textComment
       }
       this.$store.commit('newComment', payload);
+      this.textComment = '';
     }
   }
-}
+});
 </script>
 
 <style scoped>
@@ -77,6 +88,4 @@ export default {
   background-color: #fff;
   margin-top: 16px;
 }
-
-
 </style>

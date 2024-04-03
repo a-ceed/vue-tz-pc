@@ -1,22 +1,6 @@
 import { createStore } from 'vuex'
+import { IState } from "@/types/articles-types";
 
-export interface IState {
-  articles: Iarticle[]
-}
-
-export interface Iarticle {
-  id: number,
-  title: string,
-  imgUrl: string,
-  description: string,
-  lois: number,
-  comments?: IComment[],
-}
-
-export interface IComment {
-  commentNumber: number,
-  commentBody: string,
-}
 
 export default createStore<IState>({
   state: {
