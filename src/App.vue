@@ -13,11 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
-  margin: 45px 80px 45px 80px;
+  margin: 15px 80px 45px 80px;
 }
 
 nav {
-  padding: 30px;
+  padding: 30px 30px 0 0;
 
   a {
     font-weight: bold;
