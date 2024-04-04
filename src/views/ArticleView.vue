@@ -1,22 +1,22 @@
 <template>
   <div class="post">
-    <div class="img-container">
-      <img class="img" v-if="currentArticle" :src="currentArticle.imgUrl" alt="Article Image">
+    <div class="post__img-container">
+      <img class="post__img" v-if="currentArticle" :src="currentArticle.imgUrl" alt="Article Image">
     </div>
 
-    <div class="bar-container">
-      <div class="title">
+    <div class="post__article-bar">
+      <div class="post__title">
         <h1 v-if="currentArticle">{{ currentArticle.title }}</h1>
       </div>
-      <div class="lois" v-if="currentArticle">Лайки: {{ currentArticle.lois }}
-        <button class="btn" @click="incrementLois"> +</button>
-        <button class="btn" @click="decrementLois"> −</button>
+      <div class="post__likes" v-if="currentArticle">Лайки: {{ currentArticle.lois }}
+        <button class="post__btn" @click="incrementLois"> +</button>
+        <button class="post__btn" @click="decrementLois"> −</button>
       </div>
     </div>
 
-    <div class="description" v-if="currentArticle">{{ currentArticle.description }}</div>
+    <div class="post__description" v-if="currentArticle">{{ currentArticle.description }}</div>
 
-    <user-comments v-if="currentArticle && currentArticle.comments" :comments="currentArticle.comments" ></user-comments>
+    <user-comments v-if="currentArticle && currentArticle.comments" :comments="currentArticle.comments"></user-comments>
 
   </div>
 </template>
@@ -55,19 +55,18 @@ export default {
 }
 </script>
 <style scoped>
-
 .post {
   max-width: 1024px;
 }
 
-.bar-container {
+.post__article-bar {
   display: flex;
   justify-content: space-between;
   height: 100%;
   align-items: center;
 }
 
-.title {
+.post__title {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,7 +74,8 @@ export default {
   min-width: 230px;
   color: #2c3e50;
 }
-.lois {
+
+.post__likes {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -85,13 +85,15 @@ export default {
   font-weight: 700;
   color: #2c3e50;
 }
-.btn {
+
+.post__btn {
   font-size: 32px;
   font-weight: 700;
   color: #2c3e50;
   background-color: #fff;
 }
-.description {
+
+.post__description {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -99,7 +101,8 @@ export default {
   color: #2c3e50;
   margin-top: 20px;
 }
-.img-container {
+
+.post__img-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -110,13 +113,15 @@ export default {
   max-height: 640px;
   overflow: hidden;
 }
-.img {
+
+.post__img {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
 @media (max-width: 800px) {
-  .bar-container {
+  .post__article-bar {
     display: block;
     justify-content: normal;
     height: 100%;

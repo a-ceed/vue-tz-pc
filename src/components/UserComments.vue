@@ -24,20 +24,20 @@
 
 <script lang="ts">
 import { Store } from "vuex";
-import { IState } from "@/types/articles-types";
+import { IComment, IState } from "@/types/articles-types";
 import { RouteLocationNormalizedLoaded } from "vue-router";
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "UserComments",
   data() {
     return {
-      textComment: '' // Инициализируем переменную textComment
+      textComment: ''
     };
   },
   props: {
     comments: {
-      type: Object,
+      type: Object as PropType<IComment>,
       required: false
     }
   },

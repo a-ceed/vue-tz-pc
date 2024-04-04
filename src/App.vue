@@ -5,8 +5,8 @@
   <router-view/>
 </template>
 
-
 <style lang="scss">
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -49,5 +49,4 @@ a:visited {
     margin: 15px 20px 15px 20px;
   }
 }
-
 </style>

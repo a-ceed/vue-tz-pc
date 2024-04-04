@@ -1,25 +1,33 @@
 <template>
-  <div class="img-container">
-    <img class="img" v-if="article" :src="article.imgUrl" alt="Article Image">
+  <div class="article">
+    <div class="article__img-container">
+      <img class="article__img" v-if="article" :src="article.imgUrl" alt="Article Image">
+    </div>
+    <h1>
+      <router-link :to="{ path: 'article', query: { watch: article.id }}" class="article__title">{{ article.title }}</router-link>
+    </h1>
+    <div class="article__description">{{ article.description }}</div>
+    <div class="article__like"> Лайков: {{ article.lois }}</div>
   </div>
-  <h1>
-    <router-link :to="{ path: 'article', query: { watch: article.id }}">{{ article.title }}</router-link>
-  </h1>
-  <div class="description">{{ article.description }}</div>
-  <div class="like"> Лайков: {{ article.lois }}</div>
 </template>
 
-<script setup lang="ts">
-import { defineProps } from 'vue';
+<script lang="ts">
+import { defineComponent, PropType } from 'vue';
 import { Iarticle} from "@/types/articles-types";
 
-const props = defineProps<{
-  article: Iarticle;
-}>();
+export default defineComponent({
+  props: {
+    article: {
+      type: Object as PropType<Iarticle>,
+      required: true
+    }
+  },
+});
 </script>
 
 <style scoped>
-.img-container {
+
+.article__img-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,12 +38,14 @@ const props = defineProps<{
   max-height: 340px;
   overflow: hidden;
 }
-.img {
+
+.article__img {
   max-width: 100%;
   height: auto;
   display: block;
 }
-.description {
+
+.article__description {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,7 +54,8 @@ const props = defineProps<{
   color: #2c3e50;
   margin-top: 20px;
 }
-.like {
+
+.article__like {
   margin-top: 12px;
   margin-bottom: 10px;
   font-size: 20px;
