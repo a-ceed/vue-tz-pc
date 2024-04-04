@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { Iarticle} from "@/types/articles-types";
+import { Iarticle } from "@/types/articles-types";
 
 export default defineComponent({
   props: {

@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import {mapState} from "vuex";
+import { mapState } from "vuex";
 import ArticlesList from "@/components/ArticlesList.vue";
 
 export default defineComponent({
