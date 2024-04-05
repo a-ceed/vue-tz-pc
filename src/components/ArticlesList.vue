@@ -1,6 +1,6 @@
 <template>
   <div class="articles-container">
-    <articles-preview v-for="(article, index) in articles" :key="index" :article="article"></articles-preview>
+    <Articles-preview v-for="(article, index) in articles" :key="index" :article="article"/>
   </div>
 </template>
 
@@ -19,6 +19,7 @@ export default {
 </script>
 
 <style scoped>
+
 .articles-container {
   text-align: left;
 }

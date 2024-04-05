@@ -13,12 +13,12 @@ export default createStore<IState>({
         lois: 42,
         comments: [
           {
-            commentNumber: 0,
-            commentBody: "Нулевой комментарий"
+            number: 0,
+            message: "Нулевой комментарий"
           },
           {
-            commentNumber: 0,
-            commentBody: "Я за ним"
+            number: 0,
+            message: "Я за ним"
           }
         ]
       },
@@ -62,8 +62,8 @@ export default createStore<IState>({
 
       if (article && article.comments) {
         const comment = {
-          commentNumber: 0,
-          commentBody: newComment
+          number: 0,
+          message: newComment
         }
         article.comments.push(comment);
       }

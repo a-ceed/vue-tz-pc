@@ -1,14 +1,16 @@
 <template>
   <div v-if="comments && comments.length > 0">
+
     <div class="title"><h1>Комментарии:</h1></div>
 
     <div v-for="comment in comments" :key="comment.id">
       <h3 class="title-comment">Username</h3>
       <div class="title-comment">
-        {{ comment.commentBody }}
+        {{ comment.message }}
       </div>
     </div>
   </div>
+
   <div v-else>
     <div class="title"><h2>Нет комментариев</h2></div>
   </div>
@@ -55,6 +57,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 .title {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -63,6 +66,7 @@ export default defineComponent({
   min-width: 230px;
   color: #2c3e50;
 }
+
 .title-comment {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -72,15 +76,18 @@ export default defineComponent({
   color: #2c3e50;
   margin-bottom: 5px;
 }
+
 .textarea-block {
   text-align: left;
   margin-top: 60px;
 }
+
 .comment-textarea {
   width: 100%;
   height: 120px;
   font-size: 16px;
 }
+
 .comment-button {
   font-size: 32px;
   font-weight: 700;

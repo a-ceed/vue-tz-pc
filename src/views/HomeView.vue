@@ -1,5 +1,5 @@
 <template>
-  <articles-list></articles-list>
+  <Articles-list/>
 </template>
 
 <script lang="ts">

@@ -1,22 +1,22 @@
 <template>
-  <div class="post">
+  <div v-if="currentArticle" class="post">
     <div class="post__img-container">
-      <img class="post__img" v-if="currentArticle" :src="currentArticle.imgUrl" alt="Article Image">
+      <img class="post__img" :src="currentArticle.imgUrl" alt="Article Image">
     </div>
 
     <div class="post__article-bar">
       <div class="post__title">
-        <h1 v-if="currentArticle">{{ currentArticle.title }}</h1>
+        <h1>{{ currentArticle.title }}</h1>
       </div>
-      <div class="post__likes" v-if="currentArticle">Лайки: {{ currentArticle.lois }}
+      <div class="post__likes">Лайки: {{ currentArticle.lois }}
         <button class="post__btn" @click="incrementLois"> +</button>
         <button class="post__btn" @click="decrementLois"> −</button>
       </div>
     </div>
 
-    <div class="post__description" v-if="currentArticle">{{ currentArticle.description }}</div>
+    <div class="post__description">{{ currentArticle.description }}</div>
 
-    <user-comments v-if="currentArticle && currentArticle.comments" :comments="currentArticle.comments"></user-comments>
+    <user-comments v-if="currentArticle.comments" :comments="currentArticle.comments"></user-comments>
 
   </div>
 </template>
@@ -41,7 +41,9 @@ export default {
 
   mounted() {
     const articlesId = this.$route.query.watch;
-    this.currentArticle = this.articles.find(item => item.id === parseInt(articlesId))
+    if (this.articles) {
+      this.currentArticle = this.articles.find(item => item.id === parseInt(articlesId))
+    }
   },
 
   methods: {
@@ -55,6 +57,7 @@ export default {
 }
 </script>
 <style scoped>
+
 .post {
   max-width: 1024px;
 }

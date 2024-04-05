@@ -12,6 +12,6 @@ export interface Iarticle {
 }
 
 export interface IComment {
-    commentNumber: number,
-    commentBody: string,
+    number: number,
+    message: string,
 }
