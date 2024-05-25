@@ -4,6 +4,39 @@ import { IState } from "@/types/articles-types";
 
 export default createStore<IState>({
   state: {
+    saveLocal: localStorage.getItem('saveLocal') || 'eng', // Загружаем из localStorage
+    companies: [
+      {
+        name: "Coca-cola",
+        imgUrl: "coca-cola-logo-international-trash-award-.jpg",
+        antirating: 42
+      },
+      {
+        name: "Pepsi",
+        imgUrl: "pepsi-logo-international-trash-award.jpg",
+        antirating: 42
+      },
+      {
+        name: "Mars",
+        imgUrl: "mars-logo-international-trash-award.jpg",
+        antirating: 42
+      },
+      {
+        name: "Mars",
+        imgUrl: "mars-logo-international-trash-award.jpg",
+        antirating: 42
+      },
+      {
+        name: "Mars",
+        imgUrl: "mars-logo-international-trash-award.jpg",
+        antirating: 42
+      },
+      {
+        name: "Mars",
+        imgUrl: "mars-logo-international-trash-award.jpg",
+        antirating: 42
+      }
+    ],
     articles: [
       {
         id: 1,
@@ -43,6 +76,11 @@ export default createStore<IState>({
   getters: {
   },
   mutations: {
+    setLocale(state, payload) {
+      console.log('saveLocal')
+      state.saveLocal = payload
+      localStorage.setItem('saveLocal', payload) // Сохраняем в localStorage
+    },
     increment(state, articleId) {
       const articleIndex = state.articles.findIndex(item => item.id === articleId);
       if (articleIndex !== -1) {

@@ -1,4 +1,6 @@
 <template>
+  <header-site></header-site>
+  <voite-form></voite-form>
   <div v-if="currentArticle" class="post">
     <div class="post__img-container">
       <img class="post__img" :src="currentArticle.imgUrl" alt="Article Image">
@@ -24,9 +26,11 @@
 <script>
 import { mapState } from "vuex";
 import UserComments from "@/components/UserComments";
+import HeaderSite from "@/components/HeaderSite";
+import VoiteForm from "@/components/VoiteForm";
 
 export default {
-  components: {UserComments},
+  components: {VoiteForm, HeaderSite, UserComments},
   data() {
     return {
       currentArticle: null

@@ -1,4 +1,6 @@
 export interface IState {
+    saveLocal: string,
+    companies: ICompany[],
     articles: Iarticle[]
 }
 
@@ -9,6 +11,12 @@ export interface Iarticle {
     description: string,
     lois: number,
     comments?: IComment[],
+}
+
+export interface ICompany {
+    name: string,
+    imgUrl: string,
+    antirating: number,
 }
 
 export interface IComment {
