@@ -51,7 +51,6 @@
 import { defineComponent } from 'vue';
 import HeaderSite from "@/components/HeaderSite.vue";
 import { useRoute } from 'vue-router';
-import { useRouter } from 'vue-router';
 import FooterSite from "@/components/FooterSite.vue";
 
 export default defineComponent({
@@ -283,7 +282,6 @@ label.error {
   opacity: .2;
   cursor: not-allowed;
 }
-/* End Politics flag */
 
 a {
   color: #df1f29;

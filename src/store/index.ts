@@ -4,7 +4,7 @@ import { IState } from "@/types/articles-types";
 
 export default createStore<IState>({
   state: {
-    saveLocal: localStorage.getItem('saveLocal') || 'eng', // Загружаем из localStorage
+    saveLocal: localStorage.getItem('saveLocal') || 'eng',
     companies: [
       {
         name: "Coca-cola",
@@ -77,7 +77,6 @@ export default createStore<IState>({
   },
   mutations: {
     setLocale(state, payload) {
-      console.log('saveLocal')
       state.saveLocal = payload
       localStorage.setItem('saveLocal', payload) // Сохраняем в localStorage
     },

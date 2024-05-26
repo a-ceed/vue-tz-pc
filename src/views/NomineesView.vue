@@ -14,11 +14,6 @@
       <a class="aadd" href="/add"><div class="add">+</div></a>
       <div v-if="votesData && votesData.length > 0"  id="albums">
         <ul class="filtr-btn">
-          <!-- <li data-filter="all" class="active"><h6>all</h6></li>
-           <li data-filter="1"><h6>fashion</h6></li>
-           <li data-filter="2"><h6>urban</h6></li>
-           <li data-filter="3"><h6>sport</h6></li>
-           <li data-filter="4"><h6>expression</h6></li> -->
         </ul>
         <div  id="company-container" class="filtr-container row">
           <div class="item-container" v-for="company in votesData" :key="company.id">
@@ -68,14 +63,15 @@ export default defineComponent({
   async mounted() {
     //console.log("articles", this.companies)
     try {
-      const response = await (this as any).$axios.get('http://localhost:3000/api/votes');
-      this.votesData = response.data;
+      const response = await (this as any).$axios.get('/api/votes');
+      this.votesData = response.data.sort((a:any, b:any) => b.rating - a.rating);
     } catch (error) {
       console.error(error);
     }
   },
 });
 </script>
+
 <style>
 
 h2 {
@@ -111,7 +107,7 @@ h2 {
 .ms-section__block {
   width: 85%;
   margin: 0 auto 6em;
-  max-width: 88em;
+  max-width: 65em !important;
 }
 
 .aadd {
@@ -210,10 +206,6 @@ img.trash_logo{
   padding-top: 15px;
 }
 
-/**
- * Accordion
- */
-
 .toggle-box + label {
   display: block;
 }
@@ -245,7 +237,6 @@ img.trash_logo{
 .row {
   display: flex;
   flex-wrap: wrap;
-
 }
 
 .col-md-4 {

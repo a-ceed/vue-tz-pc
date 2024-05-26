@@ -10,12 +10,8 @@
         <p class="page-desc"></p>
       </div>
     </div>
-
     <div class="ms-section__block">
-
     </div>
-
-    <!-- Donat -->
     <div class="ms-section__block">
       <div id="ms-blog-post" class="row">
         <div class="col-md-8">
@@ -23,44 +19,9 @@
           <p>{{ $t('Сайт международной мусорной премии за выдающийся вклад в убийство планеты') }}</p>
           <a href="index.html">https://internationaltrashaward.org</a>
           <br>
-          <!--
-                <p>Вы можете стать меценатом международной мусорной премии, ваши деньги пойдут на информационную политику, направленную против экологического беспредела корпораций.
-                </p>
-                <br>
-
-  <a href="">
-  <div class="paypal">
-    <img src="assets/images/international-trash-avard-donat-paypal.gif">
-
-  </div>
-  </a>
-
-  <a href="">
-  <div class="patreon">
-    <img src="assets/images/international-trash-avard-donat-patreon.png">
-
-  </div>
-  </a>
-   End Donat -->
-
         </div>
       </div>
     </div>
-
-    <!-- Social -->
-
-    <!-- End Form <div class="ms-section__block center-block align-center">
-<h6>Share</h6>
-<ul class="socials share-links">
-<li><a href="https://vk.com" class="socicon-facebook"></a></li>
-<li><a href="#" class="socicon-twitter"></a></li>
-<li><a href="#" class="socicon-instagram"></a></li>
-</ul>
-</div>
-
--->
-
-
   </main>
   <footer-site></footer-site>
 </template>
@@ -85,26 +46,6 @@ export default defineComponent({
     this.companyName = route.query.watch as string | null;
   },
   methods: {
-    async Send() {
-
-      try {
-        const data = {
-          title: this.companyName,
-        };
-
-        const response = await (this as any).$axios.post('http://localhost:3000/api/votes', data);
-
-        // Редирект на другую страницу
-        // Добавляем задержку в 1 секунду перед редиректом
-        setTimeout(async () => {
-          await this.$router.push('/nominees');
-          console.log('Редирект выполнен успешно');
-        }, 1500);
-
-      } catch (error) {
-        console.error(error);
-      }
-    },
   },
 });
 </script>

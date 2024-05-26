@@ -81,7 +81,7 @@ export default defineComponent({
           title: this.companyName,
         };
 
-        const response = await (this as any).$axios.post('http://localhost:3000/api/votes', data);
+        const response = await (this as any).$axios.post('/api/votes', data);
 
         // Редирект на другую страницу
         // Добавляем задержку в 1 секунду перед редиректом

@@ -1,5 +1,11 @@
 <template>
   <div class="ms-header">
+    <!-- /Cookie -->
+    <div v-if="!acceptCookies" id="cookie_notification" ref="notificationElement">
+      <p>{{ $t('Наш сайт использует cookies') }}</p>
+      <button @click="setCookies()" class="cookie_accept">{{ $t('Принять') }}</button>
+    </div>
+
     <nav class="ms-nav">
       <div class="ms-logo">
         <a href="/" data-type="page-transition">
@@ -61,7 +67,6 @@
         </div>
       </div>
 
-
     </nav>
   </div>
 
@@ -78,7 +83,9 @@ export default {
     const { locale } = useI18n({ useScope: 'global' })
     const store = useStore();
     const isOpen = ref(false)
+    const notificationElement = ref(null);
     const selectedLanguage = ref(null)
+    const acceptCookies = localStorage.getItem('saveCookies')
 
     const languages = [
       { code: 'eng', label: 'ENG' },
@@ -92,17 +99,23 @@ export default {
     const selectLanguage = (language) => {
       selectedLanguage.value = language.label
       isOpen.value = false
-      console.log('lang', language.code)
-      // Добавьте здесь логику для смены языка приложения
       store.commit('setLocale', language.code);
       locale.value = language.code
+    }
+
+    const setCookies = () => {
+      localStorage.setItem('saveCookies', "accept")
+      notificationElement.value.style.display = 'none';
     }
 
     return {
       isOpen,
       selectedLanguage,
       languages,
-      selectLanguage
+      selectLanguage,
+      setCookies,
+      acceptCookies,
+      notificationElement
     }
   },
   computed: {
@@ -176,14 +189,10 @@ ul {
   height: 100%;
 }
 
-/* 2.2 Burger button */
-
 button {
   background: transparent;
   border: none;
 }
-
-/* 2.2 Burger button */
 
 .hamburger {
   margin-left: 60px;
@@ -276,9 +285,6 @@ button {
   -webkit-transform: translate3d(0, -16px, 0) rotate(-90deg);
   transform: translate3d(0, -16px, 0) rotate(-90deg);
 }
-
-/* 2.3 Collapse navigation */
-
 
 .height-full-viewport {
   position: fixed;
@@ -467,5 +473,53 @@ button {
   font-family: 'Open Sans', Arial;
   font-size: 16px;
   cursor: pointer;
+}
+/* Cookie */
+
+#cookie_notification{
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 35px;
+  left: 50%;
+  max-width: 90%;
+  transform: translateX(-50%);
+  padding: 12px;
+  background-color: #000;
+  border-radius: 4px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4);
+  z-index: 9;
+}
+
+#cookie_notification p{
+  margin: 0;
+  font-size: 0.7rem;
+  text-align: left;
+  color: #fff;
+  padding-right: 15px;
+}
+
+@media (min-width: 576px){
+  #cookie_notification.show{
+    display: flex;
+    color: #fff;
+  }
+  .cookie_accept{
+    margin: 0 15px 0 10px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 575px){
+  #cookie_notification.show{
+    display: block;
+    text-align: left;
+    color: #fff;
+  }
+  .cookie_accept{
+    margin: 10px 0 0 0;
+    color: #fff;
+  }
 }
 </style>

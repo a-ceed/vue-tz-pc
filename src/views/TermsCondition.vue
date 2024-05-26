@@ -166,24 +166,14 @@
             <p>If any provision of Terms is held by a court or other tribunal of competent jurisdiction to be invalid, illegal or unenforceable for any reason, such provision shall be eliminated or limited to the minimum extent such that the remaining provisions of Terms will continue in full force and effect.</p>
             <ol start='21' >
               <li>Acknowledgement</li>
-
             </ol>
             <p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
             <ol start='22' >
               <li>Contact Us</li>
-
             </ol>
             <p>Please send your feedback, comments, requests for technical support by email: <a href='mailto:internationaltrashaward@gmail.com' target='_blank' class='url'>internationaltrashaward@gmail.com</a>.</p>
-
             <div class="col-md-8">
-
-
-
-
-
-
             </div>
-
             <!-- End Donat -->
           </div>
         </div>
@@ -213,26 +203,6 @@ export default defineComponent({
     this.companyName = route.query.watch as string | null;
   },
   methods: {
-    async Send() {
-
-      try {
-        const data = {
-          title: this.companyName,
-        };
-
-        const response = await (this as any).$axios.post('http://localhost:3000/api/votes', data);
-
-        // Редирект на другую страницу
-        // Добавляем задержку в 1 секунду перед редиректом
-        setTimeout(async () => {
-          await this.$router.push('/nominees');
-          console.log('Редирект выполнен успешно');
-        }, 1500);
-
-      } catch (error) {
-        console.error(error);
-      }
-    },
   },
 });
 </script>
@@ -241,9 +211,7 @@ export default defineComponent({
 body {
   overflow-y: auto !important;
 }
-/**
- * 3. Pages Style
- */
+
 h2 {
   font-size: calc(36px + 16 * (100vw - 992px) / 1508);
 }

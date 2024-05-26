@@ -14,7 +14,6 @@
     <div class="ms-section__block">
       <div id="about" class="row">
         <div class="about__img col-md-12">
-          <!-- Big img <p><img src="assets/images/albums/img-md.jpg" alt="img"></p> -->
         </div>
         <div class=" center-block">
           <div class=" col-md-8">
@@ -39,19 +38,8 @@
             <p><strong>Feedback and final clauses</strong></p>
             <p>You can contact the administration of <a href='http://www.internationaltrashaward.org' target='_blank' class='url'>www.internationaltrashaward.org</a> regarding any questions related to privacy policy on: <a href='mailto:internationaltrashaward@gmail.com' target='_blank' class='url'>internationaltrashaward@gmail.com</a>, or by filling a contact form specified in a corresponding section of this website. If you do not agree with this privacy policy, you cannot use the services of <a href='http://www.internationaltrashaward.org' target='_blank' class='url'>www.internationaltrashaward.org</a>. In this case you should avoid visiting our website.</p>
             <p><em>This document was produced using <a href='https://profiset.org/free-customizable-privacy-policy-online-generator-gdpr/'>privacy policy online generator Profiset.org</a></em> </p>
-
-
-
-
             <div class="col-md-8">
-
-
-
-
-
-
             </div>
-
             <!-- End Donat -->
           </div>
         </div>
@@ -81,26 +69,6 @@ export default defineComponent({
     this.companyName = route.query.watch as string | null;
   },
   methods: {
-    async Send() {
-
-      try {
-        const data = {
-          title: this.companyName,
-        };
-
-        const response = await (this as any).$axios.post('http://localhost:3000/api/votes', data);
-
-        // Редирект на другую страницу
-        // Добавляем задержку в 1 секунду перед редиректом
-        setTimeout(async () => {
-          await this.$router.push('/nominees');
-          console.log('Редирект выполнен успешно');
-        }, 1500);
-
-      } catch (error) {
-        console.error(error);
-      }
-    },
   },
 });
 </script>
@@ -109,9 +77,7 @@ export default defineComponent({
 body {
   overflow-y: auto !important;
 }
-/**
- * 3. Pages Style
- */
+
 h2 {
   font-size: calc(36px + 16 * (100vw - 992px) / 1508);
 }
@@ -145,8 +111,6 @@ h2 {
   position: relative;
   margin: 15px 0;
 }
-
-/
 label.error {
   position: absolute;
   bottom: 1.2em;
